@@ -18,3 +18,4 @@ Repo of my personal web page (PWA technologies)
 # Roadmap
 - Web page in Vue
 - Global web page
+- Replace the current webpage
