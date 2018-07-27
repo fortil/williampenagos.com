@@ -6,6 +6,7 @@ Repo of my personal web page (PWA technologies)
 
 ## Technologies to use
 - Next :white_check_mark:
+- Apply linter :white_check_mark:
 - Firebase :black_square_button:
 - - NodeJS
 - Push Notifications :black_square_button:
