@@ -180,7 +180,7 @@ const styles = theme => ({
     })
   },
   'contentShift-left': {
-    marginLeft: 0
+    // marginLeft: 0
   },
   'contentShift-right': {
     marginRight: 0
