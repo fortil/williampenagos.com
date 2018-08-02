@@ -11,6 +11,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import { mailFolderListItems, otherMailFolderListItems } from '../components/tileData'
 import { withStyle } from '../src/withAll'
 import { Header } from '../commons/head'
+import RightBar from '../commons/rightBar'
 import Tooltip from '@material-ui/core/Tooltip'
 import Button from '@material-ui/core/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -38,82 +39,14 @@ class DrawerApp extends App {
     })
   }
 
-  // static async getInitialProps({ Component, router, ctx }) {
-  //   let pageProps = {}
-
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx)
-  //   }
-
-  //   return { pageProps, router }
-  // }
-
   render () {
     const { classes, theme, Component, pageProps, reduxStore } = this.props
-    const { anchor, open } = this.state
-    const keysProp = Object.keys(this.props)
-      .filter(k => k !== 'children' && k !== 'Component')
-      .map(k => ({ [k]: this.props[k] }))
-    const props = Object.assign({}, ...keysProp)
-
-    const drawer = (
-      <Drawer
-        variant='persistent'
-        anchor={anchor}
-        open={open}
-        classes={{ paper: classes.drawerPaper }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={this.handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>{mailFolderListItems}</List>
-        <Divider />
-        <List>{otherMailFolderListItems}</List>
-      </Drawer>
-    )
-
-    let before = null
-    let after = null
-
-    if (anchor === 'left') {
-      before = drawer
-    } else {
-      after = drawer
-    }
 
     const isErrorPage = this.props.pageProps && this.props.pageProps.statusCode && this.props.pageProps.statusCode !== 200
 
     return (
       <div className={classes.root}>
-        <div className={classes.appFrame}>
-          <Header handleDrawerOpen={this.handleDrawerOpen} open={open} anchor={anchor} />
-          {before}
-          <main
-            className={classNames(classes.content, classes[`content-${anchor}`], {
-              [classes.contentShift]: open,
-              [classes.contentError]: isErrorPage,
-              [classes[`contentShift-${anchor}`]]: open
-            })}
-          >
-            <div className={classNames(
-              { [classes.drawerHeader]: !isErrorPage }
-            )} />
-            <Container>
-              <Provider store={reduxStore}>
-                <Component {...pageProps} {...props} />
-              </Provider>
-              <Tooltip title='If you want to receive push notifications'>
-                <Button variant='fab' color='secondary' className={classes.absolute}>
-                  <FontAwesomeIcon icon={faBell} size='2x'/>
-                </Button>
-              </Tooltip>
-            </Container>
-          </main>
-          {after}
-        </div>
+        <RightBar />
       </div>
     )
   }
@@ -133,10 +66,7 @@ const drawerWidth = 240
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
-  },
-  appFrame: {
-    // height: '100vh',
+    flexGrow: 1,
     minHeight: '100vh',
     zIndex: 1,
     overflow: 'hidden',
@@ -144,6 +74,9 @@ const styles = theme => ({
     display: 'flex',
     width: '100%'
   },
+  // appFrame: {
+    // height: '100vh',
+  // },
   drawerPaper: {
     position: 'relative',
     width: drawerWidth

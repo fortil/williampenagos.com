@@ -21,11 +21,11 @@ class Home extends Component {
     profile: {}
   }
   componentDidMount() {
-    const { actions, profile } = this.props
-    const user = profile.profile
-    if (!Object.keys(user).length) {
-      actions.getUser()
-    }
+    // const { actions, profile } = this.props
+    // const user = profile.profile
+    // if (!Object.keys(user).length) {
+    //   actions.getUser()
+    // }
   }
   componentWillReceiveProps = nextProps => {
     if (nextProps.profile.profile.hasOwnProperty('avatar_url')) {
@@ -42,85 +42,9 @@ class Home extends Component {
   
   render () {
     const { classes } = this.props
-    const { profile } = this.state
+    // const { profile } = this.state
     return <div className={classes.root}>
-      <Grid container spacing={24} direction='row' justify='center'>
-        <Grid item xs={4} style={{ display: 'flex', justifyContent: 'center' }}>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.media}
-              image={profile.avatar_url}
-              title={profile.bio}
-            />
-            <CardContent>
-              <Typography component='p' Subheading>
-                From GitHub information
-              </Typography>
-              <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
-                <FontAwesomeIcon icon={faGithub} size='2x' />
-                <Typography gutterBottom variant='headline' component='h2' style={{ marginLeft: 5 }}>
-                  {profile.name}
-                </Typography>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
-                <FontAwesomeIcon icon={faMapMarkedAlt} />
-                <Typography component='p' style={{ marginLeft: 5 }}>
-                  @{profile.login} | {profile.location} - Colombia
-                </Typography>
-              </div>
-              <br />
-              <Typography component='p'>
-                Web FullStack Development - {profile.bio}
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
-      <Grid container spacing={24} direction='row' justify='center'>
-        <Grid item xs={4} style={{ textAlign: 'center', marginTop: 10 }}>
-          <Typography variant='title'>
-            The last projects that I have worked
-          </Typography>
-        </Grid>
-      </Grid>
-      <Grid container spacing={24} direction='row' justify='center'>
-        {
-          principalProjects.map((entry, i) => {
-            return <Grid item xs={4} key={i}>
-              <Card className={classes.card2} style={{ cursor: 'pointer' }}>
-                <CardMedia
-                  className={classes.cover}
-                  image={entry.image}
-                  title={entry.description}
-                  onClick={() => this.goTo(entry)}
-                />
-                <div className={classes.details}>
-                  <CardContent className={classes.content2} onClick={() => this.goTo(entry, 'stack')}>
-                    <Typography variant='subheading'>{entry.title}</Typography>
-                    <Typography variant='caption'>Technologies:</Typography>
-                    <Grid container spacing={0} direction='row' justify='center'>
-                      {
-                        entry.techs.map((tech, e) => {
-                          return <Grid item xs={3} key={e}>
-                            <FontAwesomeIcon icon={tech} />
-                          </Grid>
-                        })
-                      }
-                      {
-                        entry.techSvg && entry.techSvg.map((Tech, e) => {
-                          return <Grid item xs={3} key={e}>
-                            <Tech aria-hidden='true' data-prefix='fab' data-icon='node-js' class='svg-inline--fa fa-node-js fa-w-14 ' role='img' viewBox='150 80 298 362' />
-                          </Grid>
-                        })
-                      }
-                    </Grid>
-                  </CardContent>
-                </div>
-              </Card>
-            </Grid>
-          })
-        }
-      </Grid>
+      
     </div>
   }
 }
