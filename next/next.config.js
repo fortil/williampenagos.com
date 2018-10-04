@@ -1,4 +1,6 @@
-module.exports = {
+const withCSS = require('@zeit/next-css')
+
+module.exports = Object.assign({
   exportPathMap: function (defaultPathMap) {
     return {
       '/': { page: '/', name: 'about' },
@@ -6,4 +8,4 @@ module.exports = {
       '/speaks': { page: '/speaks', name: 'speaks' },
     }
   }
-}
+}, withCSS())
