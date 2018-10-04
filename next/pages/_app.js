@@ -1,130 +1,97 @@
 import App, { Container } from 'next/app'
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import Drawer from '@material-ui/core/Drawer'
-import List from '@material-ui/core/List'
-import Divider from '@material-ui/core/Divider'
-import IconButton from '@material-ui/core/IconButton'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import { mailFolderListItems, otherMailFolderListItems } from '../components/tileData'
-import { withStyle } from '../src/withAll'
-import { Header } from '../commons/head'
-import RightBar from '../commons/rightBar'
-import Tooltip from '@material-ui/core/Tooltip'
-import Button from '@material-ui/core/Button'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell } from '@fortawesome/free-solid-svg-icons'
-import { Provider } from 'react-redux'
 import withReduxStore from '../redux/with-redux'
+import { Provider } from 'react-redux'
+import getPageContext from '../src/getPageContext'
+import { withAll } from '../src/withAll'
+import RightBar from '../commons/rightBar'
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import JssProvider from 'react-jss/lib/JssProvider'
 
-class DrawerApp extends App {
-  state = {
-    open: false,
-    anchor: 'left'
+const drawerWidth = 240;
+
+class MainApp extends App {
+  constructor(props) {
+    super(props);
+    this.pageContext = getPageContext();
   }
 
-  handleDrawerOpen = () => {
-    this.setState({ open: true })
+  componentDidMount() {
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles && jssStyles.parentNode) {
+      jssStyles.parentNode.removeChild(jssStyles);
+    }
   }
 
-  handleDrawerClose = () => {
-    this.setState({ open: false })
-  }
-
-  handleChangeAnchor = event => {
-    this.setState({
-      anchor: event.target.value
-    })
-  }
-
-  render () {
-    const { classes, theme, Component, pageProps, reduxStore } = this.props
-
-    const isErrorPage = this.props.pageProps && this.props.pageProps.statusCode && this.props.pageProps.statusCode !== 200
-
+  render() {
+    const { classes, Component, pageProps, reduxStore } = this.props;
+    const props = { ...this.props }
+    delete props.classes
     return (
-      <div className={classes.root}>
-        <RightBar />
-      </div>
-    )
+      <Container>
+        <Provider store={reduxStore}>
+          <JssProvider
+            registry={this.pageContext.sheetsRegistry}
+            generateClassName={this.pageContext.generateClassName}
+          >
+            <MuiThemeProvider
+              theme={this.pageContext.theme}
+              sheetsManager={this.pageContext.sheetsManager}
+            >
+              <CssBaseline />
+              <div className={classes.root}>
+                <RightBar {...props} />
+                <main className={classes.content}>
+                  <div className={[classes.toolbar, classes.toolbarResponsive].join(' ')} />
+                  <Component pageContext={this.pageContext} {...pageProps} />
+                </main>
+              </div>
+            </MuiThemeProvider>
+          </JssProvider>
+        </Provider>
+      </Container>
+    );
   }
 }
 
-DrawerApp.propTypes = {
+MainApp.propTypes = {
   classes: PropTypes.object.isRequired,
-  children: PropTypes.element.isRequired,
-  theme: PropTypes.object.isRequired
-}
-
-Drawer.defaultProps = {
-  children: <span />
-}
-
-const drawerWidth = 240
+  // theme: PropTypes.object.isRequired,
+};
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     minHeight: '100vh',
+    height: '100%',
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
     display: 'flex',
-    width: '100%'
+    width: '100%',
   },
-  // appFrame: {
-    // height: '100vh',
-  // },
-  drawerPaper: {
-    position: 'relative',
-    width: drawerWidth
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar
+  toolbar: theme.mixins.toolbar,
+  toolbarResponsive: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
   },
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+    },
+    [theme.breakpoints.up('md')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
+    // height: '100%'
   },
-  contentError: {
-    padding: '0px!important'
-  },
-  'content-left': {
-    marginLeft: -drawerWidth
-  },
-  'content-right': {
-    marginRight: -drawerWidth
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  'contentShift-left': {
-    // marginLeft: 0
-  },
-  'contentShift-right': {
-    marginRight: 0
-  },
-  absolute: {
-    position: 'absolute',
-    bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 3,
-  }
-})
+});
 
 export default withReduxStore(
-  withStyle(styles, { withTheme: true })(DrawerApp)
+  withAll(styles)(MainApp)
 )

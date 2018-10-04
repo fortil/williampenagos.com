@@ -1,118 +1,79 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyle } from '../src/withAll'
-import Paper from '@material-ui/core/Paper'
-import Grid from '@material-ui/core/Grid'
-import { connect } from 'react-redux'
-import { SITE_NAME } from '../config'
 import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
 import CardMedia from '@material-ui/core/CardMedia'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons'
-import { getUser } from '../redux/actions/profile'
-import getInitialState from '../redux/reducers/initialState'
-import { principalProjects } from '../utils/data'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 
-class Home extends Component {
-  state = {
-    profile: {}
-  }
-  componentDidMount() {
-    // const { actions, profile } = this.props
-    // const user = profile.profile
-    // if (!Object.keys(user).length) {
-    //   actions.getUser()
-    // }
-  }
-  componentWillReceiveProps = nextProps => {
-    if (nextProps.profile.profile.hasOwnProperty('avatar_url')) {
-      this.setState({ profile: nextProps.profile.profile })
-    }
-  }
-  goTo = (entry, type) => {
-    if (type === 'stack' && entry.stackLink) {
-      window.open(entry.stackLink, entry.title)
-    } else {
-      window.open(entry.link, entry.title)
-    }
-  }
-  
-  render () {
-    const { classes } = this.props
-    // const { profile } = this.state
-    return <div className={classes.root}>
-      
-    </div>
+class IndexHome extends Component {
+  render() {
+    const { classes } = this.props;
+    return (
+      <Grid container justify={'center'}>
+        <Grid item>
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                alt="William Penagos"
+                className={classes.media}
+                height="400"
+                image="/static/images/background.jpg"
+                title="William Penagos"
+              />
+              <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Typography component="p">
+                  Hello my name is
+                </Typography>
+                <Typography gutterBottom variant="headline" component="h2">
+                  William Penagos
+                </Typography>
+                <Typography component="p">
+                I'm Web Development leader with more than 7 years of experience in JavaScript technologies. A passionate to the code and the communities of development, leader of the Cali GDG, React and Vue mentor.
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+      </Grid>
+    );
   }
 }
 
-Home.propTypes = {
+IndexHome.propTypes = {
   classes: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
-}
+};
 
-Home.defaultProps = {
-  profile: {
-    name: SITE_NAME
+const styles = theme => {
+  return {
+    card: {
+      [theme.breakpoints.down('sm')]: {
+        width: '100%',
+      },
+      [theme.breakpoints.up('sm')]: {
+        maxWidth: 600,
+      },
+      [theme.breakpoints.up('md')]: {
+        maxWidth: 800,
+      },
+    },
+    media: {
+      objectFit: 'cover',
+      width: '100%',
+      [theme.breakpoints.down('sm')]: {
+        height: 400,
+      },
+      [theme.breakpoints.up('sm')]: {
+        height: 500,
+      },
+      [theme.breakpoints.up('md')]: {
+        height: 600,
+      },
+    },
   }
-}
+};
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
-  card: {
-    maxWidth: 345,
-    padding: theme.spacing.unit * 2,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  },
-  card2: {
-    display: 'flex',
-    color: theme.palette.text.secondary
-  },
-  details: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  content2: {
-    flex: '1 0 auto',
-  },
-  cover: {
-    minWidth: 190,
-    height: 151,
-  },
-  controls: {
-    display: 'flex',
-    alignItems: 'center',
-    paddingLeft: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-  },
-  playIcon: {
-    height: 38,
-    width: 38,
-  }
-})
-
-const mapStateToProps = (state = getInitialState()) => ({ profile: state.profile })
-
-const mapDispatchToProps = dispatch => ({
-  actions: {
-    getUser: () => dispatch(getUser())
-  }
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withStyle(styles, { withTheme: true })(Home))
+export default withStyle(styles)(IndexHome)
