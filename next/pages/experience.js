@@ -10,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton'
 import LinkIcon from '@material-ui/icons/Link'
 import Tooltip from '@material-ui/core/Tooltip'
 
-const drawerWidth = 240;
 const styles = theme => {
   return {
     card: {
@@ -150,7 +149,7 @@ class Experiences extends Component {
                   <Typography gutterBottom variant="headline" component="h2">
                     {exp.title}
                   </Typography>
-                  <Typography component="p">
+                  <Typography component="p" variant="subheading">
                     {exp.content}
                   </Typography>
                 </CardContent>

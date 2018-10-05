@@ -6,7 +6,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 package-lock.json*
-
+out/
+.next/
+.firebase/
 # Runtime data
 pids
 *.pid
@@ -61,3 +63,4 @@ typings/
 
 # Ignore Jetbrains' IDE config folder
 .idea/
+.DS*

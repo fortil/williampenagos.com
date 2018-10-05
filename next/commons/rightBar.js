@@ -20,8 +20,16 @@ class RightBar extends Component {
     mobileOpen: false,
   };
   handleDrawerToggle = () => {
-    this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+    console.log(this.props.width, !['lg', 'md'].includes(this.props.width))
+    if (!['lg', 'md'].includes(this.props.width)) {
+      this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+    }
   };
+
+  capitalizeRoute = () => {
+    const name = this.props.router.pathname.replace('/', '')
+    return name.charAt(0).toUpperCase() + name.slice(1)
+  }
 
   render() {
     const { classes, theme } = this.props
@@ -39,7 +47,7 @@ class RightBar extends Component {
         </List>
         <Divider />
         <List>
-          <ListBar {...this.props} />
+          <ListBar {...this.props} handleDrawerToggle={this.handleDrawerToggle} />
         </List>
       </div>
     );
@@ -47,7 +55,7 @@ class RightBar extends Component {
     return (
       <div className={classes.bar}>
         {/* <Hidden mdUp> */}
-        <AppBar className={classes.appBar} color={'default'}>
+        <AppBar className={classes.appBar} color={'default'} position={`static`}>
           <Toolbar>
             <IconButton
               color="inherit"
@@ -58,7 +66,7 @@ class RightBar extends Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" noWrap>
-              William Penagos
+              {this.capitalizeRoute()}
             </Typography>
           </Toolbar>
         </AppBar>

@@ -1,0 +1,9 @@
+{
+  "name": "WilliamPenagos",
+  "short_name": "William Penagos",
+  "start_url": "/",
+  "theme_color": "#000000",
+  "background_color": "#FFFFFF",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}

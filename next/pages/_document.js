@@ -22,8 +22,8 @@ class WillDocument extends Document {
               'minimum-scale=1, width=device-width, height=device-height'
             }
           />
-          <link rel='manifest' href='static/manifest.json' />
-          <link rel='icon' href={'static/favicono.png'} sizes='16x16' type='image/png' />
+          <link rel='manifest' href='/manifest.json' />
+          <link rel='icon' href={'/favicono.png'} sizes='16x16' type='image/png' />
           {/* PWA primary color */}
           <meta name='theme-color' content={pageContext.theme.palette.primary.main} />
           <link
@@ -39,6 +39,22 @@ class WillDocument extends Document {
         <body style={{ margin: 0 }}>
           <Main />
           <NextScript />
+          <script type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker
+                  .register('/sw.js')
+                  .then(registration => {
+                    console.log('service worker registration successful', registration)
+                  })
+                  .catch(err => {
+                    console.warn('service worker registration failed', err.message)
+                  })
+              }
+              `,
+            }}
+          />
         </body>
       </html>
     )

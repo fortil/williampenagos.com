@@ -94,7 +94,7 @@ class Speaks extends Component {
       <div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Typography gutterBottom variant="headline" component="h2">
-          Some papers that I have done
+          Some presentations that I have done
         </Typography>
         </div>
         <div className={classes.contenedor}>
@@ -112,7 +112,7 @@ class Speaks extends Component {
                   <Typography gutterBottom variant="headline" component="h2">
                     {exp.title}
                   </Typography>
-                  <Typography component="p">
+                  <Typography component="p" variant="subheading">
                     {exp.content}
                   </Typography>
                 </CardContent>

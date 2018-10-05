@@ -20,18 +20,18 @@ class IndexHome extends Component {
                 component="img"
                 alt="William Penagos"
                 className={classes.media}
-                height="400"
+                // height="400"
                 image="/static/images/background.jpg"
                 title="William Penagos"
               />
               <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Typography component="p">
+                <Typography component="p" variant="subheading">
                   Hello my name is
                 </Typography>
                 <Typography gutterBottom variant="headline" component="h2">
                   William Penagos
                 </Typography>
-                <Typography component="p">
+                <Typography component="p" variant="subheading">
                 I'm Web Development leader with more than 7 years of experience in JavaScript technologies. A passionate to the code and the communities of development, leader of the Cali GDG, React and Vue mentor.
                 </Typography>
               </CardContent>
@@ -54,10 +54,10 @@ const styles = theme => {
         width: '100%',
       },
       [theme.breakpoints.up('sm')]: {
-        maxWidth: 600,
+        maxWidth: 800,
       },
       [theme.breakpoints.up('md')]: {
-        maxWidth: 800,
+        maxWidth: 1000,
       },
     },
     media: {
