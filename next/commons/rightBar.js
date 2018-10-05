@@ -20,8 +20,7 @@ class RightBar extends Component {
     mobileOpen: false,
   };
   handleDrawerToggle = () => {
-    console.log(this.props.width, !['lg', 'md'].includes(this.props.width))
-    if (!['lg', 'md'].includes(this.props.width)) {
+    if (!['xl', 'lg', 'md'].includes(this.props.width)) {
       this.setState(state => ({ mobileOpen: !state.mobileOpen }));
     }
   };

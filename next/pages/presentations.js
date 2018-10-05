@@ -158,7 +158,7 @@ const styles = theme => {
         height: '1900px',
       },
       [theme.breakpoints.up('md')]: {
-        height: '1400px',
+        height: '1500px',
       },
     },
     item: {
