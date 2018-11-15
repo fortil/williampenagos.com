@@ -2,8 +2,26 @@
   "name": "WilliamPenagos",
   "short_name": "William Penagos",
   "start_url": "/",
+  "gcm_sender_id": "103953800507",
   "theme_color": "#000000",
-  "background_color": "#FFFFFF",
-  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "/static/icons/36.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icons/144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icons/240.png",
+      "sizes": "240x240",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#000000",
+  "display": "standalone",
   "orientation": "portrait"
 }

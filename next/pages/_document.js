@@ -46,6 +46,7 @@ class WillDocument extends Document {
                 navigator.serviceWorker
                   .register('/sw.js')
                   .then(registration => {
+                    window['registration'] = registration
                     console.log('service worker registration successful', registration)
                   })
                   .catch(err => {

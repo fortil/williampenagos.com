@@ -51,6 +51,7 @@
     "@material-ui/icons": "3.0.1",
     "@zeit/next-css": "1.0.1",
     "axios": "0.18.0",
+    "firebase": "^5.5.8",
     "next": "7.0.1",
     "react": "16.4.1",
     "react-dom": "16.4.1",
@@ -60,6 +61,7 @@
     "redux": "4.0.0",
     "redux-devtools-extension": "2.13.5",
     "redux-thunk": "2.3.0",
-    "styled-jsx": "2.2.7"
+    "styled-jsx": "2.2.7",
+    "sweetalert": "^2.1.2"
   }
 }
