@@ -13,7 +13,7 @@ app.prepare().then(() => {
 		const parsedUrl = parse(req.url, true);
 		const { pathname } = parsedUrl;
 
-		if (pathname === '/sw.js' || pathname === '/manifest.json') {
+    if (pathname === '/sw.js' || pathname === '/manifest.json' || pathname === '/firebase-messaging-sw.js') {
 			const filePath = join(__dirname, 'static', pathname);
 			app.serveStatic(req, res, filePath);
 		} else {

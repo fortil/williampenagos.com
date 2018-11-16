@@ -12,7 +12,7 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import InserComentIcon from '@material-ui/icons/InsertComment';
 import Messaging from '../lib/messaging';
 import Button from '@material-ui/core/Button';
-import { messaging } from '../lib/firebase';
+import { SITE_NAME } from '../config';
 
 const drawerWidth = 240;
 
@@ -26,12 +26,11 @@ class MainApp extends App {
 		const jssStyles = document.querySelector('#jss-server-side');
 		if (jssStyles && jssStyles.parentNode) {
 			jssStyles.parentNode.removeChild(jssStyles);
-    }
-    messaging().useServiceWorker(window['registration']);
+		}
 	}
 
 	handleClick = () => {
-    Messaging()
+		Messaging();
 	};
 
 	render() {
@@ -49,6 +48,7 @@ class MainApp extends App {
 							<CssBaseline />
 							<div className={classes.root}>
 								<RightBar {...props} />
+								<title>{SITE_NAME}</title>
 								<main className={classes.content}>
 									<div className={[ classes.toolbar, classes.toolbarResponsive ].join(' ')} />
 									<Button

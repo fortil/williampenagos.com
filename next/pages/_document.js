@@ -1,6 +1,5 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
-import { SITE_NAME } from '../config'
 import JssProvider from 'react-jss/lib/JssProvider'
 import flush from 'styled-jsx/server'
 import getPageContext from '../src/getPageContext'
@@ -12,7 +11,6 @@ class WillDocument extends Document {
     return (
       <html lang='es' dir='ltr'>
         <Head>
-          <title>{SITE_NAME}</title>
           <meta charSet='utf-8' />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
@@ -26,6 +24,9 @@ class WillDocument extends Document {
           <link rel='icon' href={'/favicono.png'} sizes='16x16' type='image/png' />
           {/* PWA primary color */}
           <meta name='theme-color' content={pageContext.theme.palette.primary.main} />
+          <meta name="description" content="I'm web FullStack Developer with 8 years of experience" />
+          <meta name="keywords" content="William,Penagos,React,Vue,Nodejs,JavaScript" />
+          <meta name="author" content="William Penagos" />
           <link
             rel='stylesheet'
             href='https://fonts.googleapis.com/css?family=Roboto:300,400,500'

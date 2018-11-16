@@ -13,9 +13,9 @@ exports.addMessage = functions.https.onCall((data, context) => {
 
 	let payload = {
 		notification: {
-			title: '¡Bienvenid@!',
-			body: 'Recibirás las últimas noticias de Colombia y el mundo',
-			icon: '/icons/144.png',
+			title: '¡Bienvenid@ a williampenagos.com!',
+			body: 'Bienvenido a mi página, has probado con éxito las push notifications.',
+			icon: '/static/icons/144.png',
 			click_action: `https://www.williampenagos.com/`
 		},
 		data: {
