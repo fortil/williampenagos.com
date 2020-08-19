@@ -52,7 +52,7 @@
     "@zeit/next-css": "1.0.1",
     "axios": "0.18.1",
     "firebase": "^5.5.8",
-    "next": "7.0.1",
+    "next": "9.3.2",
     "react": "16.4.1",
     "react-dom": "16.4.2",
     "react-jss": "8.6.0",
