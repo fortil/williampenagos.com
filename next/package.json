@@ -54,7 +54,7 @@
     "firebase": "^5.5.8",
     "next": "7.0.1",
     "react": "16.4.1",
-    "react-dom": "16.4.1",
+    "react-dom": "16.4.2",
     "react-jss": "8.6.0",
     "react-redux": "5.0.7",
     "react-router-redux": "4.0.8",
