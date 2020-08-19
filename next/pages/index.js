@@ -32,7 +32,19 @@ class IndexHome extends Component {
                   William Penagos
                 </Typography>
                 <Typography component="p" variant="subheading">
-                I'm Web Development leader with more than 7 years of experience in JavaScript technologies. A passionate to the code and the communities of development, leader of the Cali GDG, React and Vue mentor.
+                I am System Engineer, a JavaScript FullStack developer and leader of a Google Developers Community group. I have been working with JavaScript for 9 years so I am very familiar with several frameworks within this programming language. Some of these frameworks include React, Angular, Vue, Node, Express, LoopBack, Sequelize, TyepScript, etc.
+                </Typography>
+                <Typography component="p" variant="subheading">
+Right now I am responsible for overseeing and managing my team of developers. I love writing code and I’m comfortable with many developing processes like DevOps, Backend, and Front-end.
+                </Typography>
+                <Typography component="p" variant="subheading">
+Specially I love the Progressive Web Apps and enjoy working on challenging projects that allow me to apply and learn new technologies every day.
+                </Typography>
+                <Typography component="p" variant="subheading">
+In my experience I have worked with several international companies such as Sightlinemaps and Source Meridian. Currently, I am working on a USA Fintech Milo Credit where I am implementing new systems and infrastructures.
+                </Typography>
+                <Typography component="p" variant="subheading">
+                  <code>updated 08/09/2019</code>
                 </Typography>
               </CardContent>
             </CardActionArea>

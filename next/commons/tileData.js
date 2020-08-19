@@ -8,7 +8,7 @@ import Link from 'next/link'
 export const ListBar = ({ router, handleDrawerToggle }) => {
   const download = () => {
     handleDrawerToggle()
-    window.open('/static/cv.pdf', '_blank')
+    window.open(`/static/cv.pdf?v=${Math.random()}`, '_blank')
   }
   return (
     <div>

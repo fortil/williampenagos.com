@@ -55,6 +55,13 @@ const styles = theme => {
 
 const experiences = [
   {
+    img: '/static/images/projects/milocredit.png',
+    alt: 'Milo Credit',
+    title: "A new way of getting a home loan online. Home loans don't need to be complicated or take forever",
+    link: 'https://milocredit.com',
+    content: "I have done all architecture (Continuous Integration, EC2, TypeScript, Rekognition, S3, CloudFront, Lambda, Route 53, API Gateway and RDS instance setup,) and software bases implementation to start the development.",
+  },
+  {
     img: '/static/images/projects/logo_certix.png',
     alt: 'Certix',
     title: 'Certix - Delete academic fraud with blockchain',

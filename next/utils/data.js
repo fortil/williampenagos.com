@@ -8,6 +8,15 @@ export const getIconTech = iconStr => {
 
 export const principalProjects = [
   {
+    title: 'Milo Credit',
+    link: 'https://milocredit.com',
+    stackLink: 'https://milocredit.com',
+    image: '/static/projects/milocredit.png',
+    description: "A new way of getting a home loan online. Home loans don't need to be complicated or take forever",
+    techs: ['React', 'Chrome', 'Aws', 'Docker', 'Css3', 'Js', 'Loopback', 'Python', 'NodeJs']
+      .map(getIconTech)
+  },
+  {
     title: 'Sightline Maps',
     link: 'https://sightlinemaps.com',
     stackLink: 'https://stackshare.io/sightline-maps/sightline-maps',
